@@ -1,0 +1,8 @@
+ld  : Load         : ld  imm           : 0000 ------------
+st  : Store        : st  $Rs, imm      : 1000 ---- --------
+add : Add          : add $Rd, $Rs, $Rt : 0001 ---- ---- ----
+sub : Subtract     : sub $Rd, $Rs, $Rt : 0011 ---- ---- ----
+ls  : LeftShift    : lf  $Rd, $Rs, $Rt : 0101 ---- ---- ----
+rs  : RightShift   : rs  $Rd, $Rs, $Rt : 0111 ---- ---- ----
+boz : BranchOnZero : boz $Rs, imm      : 0110 ---- --------
+baw : BranchAnyway : baw imm           : 0100 ------------
