@@ -1,8 +1,17 @@
-ld  : Load         : ld  imm           : 0000 ------------
-st  : Store        : st  $Rs, imm      : 1000 ---- --------
-add : Add          : add $Rd, $Rs, $Rt : 0001 ---- ---- ----
-sub : Subtract     : sub $Rd, $Rs, $Rt : 0011 ---- ---- ----
-ls  : LeftShift    : lf  $Rd, $Rs, $Rt : 0101 ---- ---- ----
-rs  : RightShift   : rs  $Rd, $Rs, $Rt : 0111 ---- ---- ----
-boz : BranchOnZero : boz $Rs, imm      : 0110 ---- --------
-baw : BranchAnyway : baw imm           : 0100 ------------
+ld  : Load           : ld  $Rt, $Rs, immad : 0000 ---- ---- ---- : $Rt = MEM[$Rs + ZeroExt(immad)*2]
+st  : Store          : st  $Rt, $Rs, immad : 1000 ---- ---- ---- : MEM[$Rs + ZeroExt(immad)*2] = $Rt
+add : Add            : add $Rd, $Rs, $Rt   : 0001 ---- ---- ---- : $Rd = $Rs + $Rt
+sub : Subtract       : sub $Rd, $Rs, $Rt   : 0011 ---- ---- ---- : $Rd = $Rs - $Rt
+ls  : LeftShift      : lf  $Rd, $Rs, $Rt   : 0101 ---- ---- ---- : $Rd = $Rs << $Rt
+rs  : RightShift     : rs  $Rd, $Rs, $Rt   : 0111 ---- ---- ---- : $Rd = $Rs >> $Rt
+and : LogicalAnd     : and $Rd, $Rs, $Rt   : 1001 ---- ---- ---- : $Rd = $Rs and $Rt
+or  : LogicalOr      : or  $Rd, $Rs, $Rt   : 1011 ---- ---- ---- : $Rd = $Rs or $Rt
+boz : BranchOnZero   : boz $Rs, immad      : 0110 ---- --------  : ($Rs == 0)? PC = address #address = (pc and 1111111000000000) or (ZeroExt(immad)*2)
+baw : BranchAnyway   : baw immad           : 0100 0000 --------  : PC = address             #address = (pc and 1111111000000000) or (ZeroExt(immad)*2)
+sti : StoreImmidiate : sti $Rt, imm        : 1100 ---- --------  :
+
+
+---- ---- ----
+1011011000000000
+0000000101011100
+1011011101011100
