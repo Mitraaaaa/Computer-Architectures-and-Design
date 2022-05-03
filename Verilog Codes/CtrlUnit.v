@@ -47,6 +47,7 @@ module CtrlUnit(input [3:0] OpCode, output reg bra, output reg branch,
 		 aluSrc = load || store || stri;
 		 memW = store;
 		 memR = load;
+		 notStri = ~stri;
 		end 
 		
 endmodule
