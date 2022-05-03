@@ -1,6 +1,6 @@
 # Computer Architectures and Design Project  
 ## ISA:  
-| ~~~Instruction~~~ | Usage | Binary | Description |
+| ``` Instruction ``` | Usage | Binary | Description |
 | --- | --- | --- | --- |
 | ld  : Load           | ld  $Rt, $Rs, immad | 0000 ---- ---- ---- | $Rt = MEM[$Rs + ZeroExt(immad)*2] |  
 | add : Add            | add $Rd, $Rs, $Rt   | 0001 ---- ---- ---- | $Rd = $Rs + $Rt |  
