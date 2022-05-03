@@ -1,5 +1,6 @@
 # Computer Architectures and Design Project  
 ## ISA:  
+''' 
 ld  : Load           : ld  $Rt, $Rs, immad : 0000 ---- ---- ---- : $Rt = MEM[$Rs + ZeroExt(immad)*2]  
 add : Add            : add $Rd, $Rs, $Rt   : 0001 ---- ---- ---- : $Rd = $Rs + $Rt  
 st  : Store          : st  $Rt, $Rs, immad : 0010 ---- ---- ---- : MEM[$Rs + ZeroExt(immad)*2] = $Rt  
@@ -14,6 +15,7 @@ cmp : comparator     : cmp $Rd, $Rs, $Rt   : 1010 ---- ---- ---- : $Rd = ($Rs > 
 or  : LogicalOr      : or  $Rd, $Rs, $Rt   : 1011 ---- ---- ---- : $Rd = $Rs or $Rt  
 ls  : LeftShift      : lf  $Rd, $Rs, $Rt   : 1101 ---- ---- ---- : $Rd = $Rs << $Rt  
 rs  : RightShift     : rs  $Rd, $Rs, $Rt   : 1111 ---- ---- ---- : $Rd = $Rs >> $Rt  
+''' 
   
 ![main](CPU.jpg)
 
