@@ -1,5 +1,5 @@
-#Computer Architectures and Design Project  
-##ISA:  
+# Computer Architectures and Design Project  
+## ISA:  
 ld  : Load           : ld  $Rt, $Rs, immad : 0000 ---- ---- ---- : $Rt = MEM[$Rs + ZeroExt(immad)*2]  
 add : Add            : add $Rd, $Rs, $Rt   : 0001 ---- ---- ---- : $Rd = $Rs + $Rt  
 st  : Store          : st  $Rt, $Rs, immad : 0010 ---- ---- ---- : MEM[$Rs + ZeroExt(immad)*2] = $Rt  
