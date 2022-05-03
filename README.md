@@ -5,4 +5,4 @@ Computer Architectures and Design Project
 
 #### Alireza Karimi: 993623035  
 #### Alireza Dastmalch Saei : 993613026
-#### Mitra : 993613047  
+#### Mitra Omrani: 993613047  
