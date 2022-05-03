@@ -3,7 +3,7 @@
 | Instruction | Usage | Binary | Description |
 | --- | --- | --- | --- |
 | Load           | ld  $Rt, $Rs, immad | 0000 ---- ---- ---- | $Rt = MEM[$Rs + ZeroExt(immad)*2]|  
-| Ad             | add $Rd, $Rs, $Rt   | 0001 ---- ---- ---- | $Rd = $Rs + $Rt |  
+| Add            | add $Rd, $Rs, $Rt   | 0001 ---- ---- ---- | $Rd = $Rs + $Rt |  
 | Store          | st  $Rt, $Rs, immad | 0010 ---- ---- ---- | MEM[$Rs + ZeroExt(immad)*2] = $Rt |  
 | Subtract       | sub $Rd, $Rs, $Rt   | 0011 ---- ---- ---- | $Rd = $Rs - $Rt |  
 | StoreImmidiate | sti $Rt, imm        | 0100 ---- --------  | $Rt = imm |  
