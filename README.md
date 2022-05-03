@@ -1,3 +1,3 @@
 # Computer-Architectures-and-Design
-Computer Architectures and Design Project
-![](./circuit's pics/CPU.jpg)
+Computer Architectures and Design Project  
+![main](./circuit's pics/CPU.jpg)
