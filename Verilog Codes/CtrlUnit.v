@@ -19,15 +19,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module CtrlUnit(input [3:0] OpCode, output reg bra, output reg branch, 
-							output reg regWrite, output reg regDes, output reg aluSrc, output reg memR, output reg memW
+							output reg regWrite, output reg regDes, output reg aluSrc, output reg memR, output reg memW, output MemToReg
     );
 		 reg Op1, Op2, Op3, Op4;
 		 reg load;
 		 reg store; 
 		 reg stri;
-		 reg boz;
 		 reg bran;
-		 reg comp;	
+		 reg comp;
 		 
 	always @(*)
 		begin
@@ -36,8 +35,7 @@ module CtrlUnit(input [3:0] OpCode, output reg bra, output reg branch,
 		 load = ~Op1 && ~Op2 && ~Op3 && ~Op4;
 		 store = ~Op1 && Op2 && ~Op3 && ~Op4; 
 		 stri = ~Op1 && ~Op2 && Op3 && ~Op4;
-		 boz = ~Op1 && Op2 && Op3 && ~Op4;
-		 bran = ~Op1 && ~Op2 && ~Op3 && Op4;
+		 bra = ~Op1 && ~Op2 && ~Op3 && Op4;
 		 comp = ~Op1 && Op2 && ~Op3 && Op4;	 
 	 
 		 bra = bran;
@@ -47,6 +45,7 @@ module CtrlUnit(input [3:0] OpCode, output reg bra, output reg branch,
 		 aluSrc = load || store || stri;
 		 memW = store;
 		 memR = load;
+		 MemToReg = load;
 		 notStri = ~stri;
 		end 
 		
