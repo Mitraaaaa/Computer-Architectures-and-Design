@@ -2,9 +2,9 @@
 ## ISA  
 | Instruction | Usage | Binary | Description |
 | --- | --- | --- | --- |
-| Load           | ld  $Rt, $Rs, immad | 0000 ---- ---- ---- | $Rt = MEM[$Rs + ZeroExt(immad)*2]|  
+| Load           | ld  $Rs, $Rt, immad | 0000 ---- ---- ---- | $Rt = MEM[$Rs + ZeroExt(immad)*2]|  
 | Add            | add $Rd, $Rs, $Rt   | 0001 ---- ---- ---- | $Rd = $Rs + $Rt |  
-| Store          | st  $Rt, $Rs, immad | 0010 ---- ---- ---- | MEM[$Rs + ZeroExt(immad)*2] = $Rt |  
+| Store          | st  $Rs, $Rt, immad | 0010 ---- ---- ---- | MEM[$Rs + ZeroExt(immad)*2] = $Rt |  
 | Subtract       | sub $Rd, $Rs, $Rt   | 0011 ---- ---- ---- | $Rd = $Rs - $Rt |  
 | StoreImmidiate | sti $Rt, imm        | 0100 ---- --------  | $Rt = imm |  
 | multiply       | mul $Rd, $Rs, $Rt   | 0101 ---- ---- ---- | $Rd = $Rs * $Rt |  
@@ -17,7 +17,7 @@
 | LeftShift      | lf  $Rd, $Rs, $Rt   | 1101 ---- ---- ---- | $Rd = $Rs << $Rt |  
 | RightShift     | rs  $Rd, $Rs, $Rt   | 1111 ---- ---- ---- | $Rd = $Rs >> $Rt |  
   
-![main](CPU.jpg)
+![main](CPU.png)
 
 #### Alireza Karimi: 993623035  
 #### Alireza Dastmalchi Saei : 993613026
