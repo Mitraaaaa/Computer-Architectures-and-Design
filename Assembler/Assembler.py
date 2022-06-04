@@ -3,8 +3,8 @@ import os
 
 def readFromFile(address):
     address = address.replace("\Assembler.py", "\in.txt")
-    file = open(address, 'r')
-    return file.readlines()
+    with open(address, 'r') as file:
+        return file.readlines()
 
 
 def writeToFile(address, info):
@@ -23,6 +23,7 @@ try:
     for instruction in data:
         ins = list(instruction.split())
         opCode = ""
+
         if(ins[0] == 'ld'):
             opCode = '0000'
         elif(ins[0] == 'add'):
