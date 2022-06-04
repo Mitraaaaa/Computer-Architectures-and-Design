@@ -1,18 +1,23 @@
+import os
+
+
 def readFromFile(address):
+    address = address.replace("\Assembler.py", "\in.txt")
     file = open(address, 'r')
     return file.readlines()
 
 
 def writeToFile(address, info):
-    file = open(address, 'w')
+    address = address.replace("\Assembler.py", "\out.txt")
+    file = open(address, 'w+')
     for line in info:
         file.write(line + "\n")
     file.close()
 
 
 try:
-    inpFile = input("Input File Path: ")
-    data = readFromFile(inpFile)
+    script_path = os.path.abspath(__file__)
+    data = readFromFile(script_path)
     print("File Read Successfully")
 
     for instruction in data:
@@ -46,7 +51,7 @@ try:
             opCode = '1101'
         elif(ins[0] == 'rs'):
             opCode = '1111'
-
+        # writeToFile(script_path, data)
         print(opCode)
 
 except IOError as error:
