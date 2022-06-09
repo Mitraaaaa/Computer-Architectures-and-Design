@@ -1,4 +1,90 @@
+from asyncio.windows_events import NULL
 import os
+
+
+def asm2int(asm):
+    ins = list(asm.split())
+    opCode = 0
+    rd = 0
+    rs = 0
+    rt = 0
+    imm = 0
+
+    if(ins[0] == 'ld'):
+        opCode = int('0000', base=2)
+        rs = int(ins[1], base=2)
+        rt = int(ins[2], base=2)
+        imm = int(ins[3], base=2)
+    elif(ins[0] == 'add'):
+        opCode = int('0001', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'st'):
+        opCode = int('0010', base=2)
+        rs = int(ins[1], base=2)
+        rt = int(ins[2], base=2)
+        imm = int(ins[3], base=2)
+    elif(ins[0] == 'sub'):
+        opCode = int('0011', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'sti'):
+        opCode = int('0100', base=2)
+        rt = int(ins[1], base=2)
+        imm = int(ins[2], base=2)
+    elif(ins[0] == 'mul'):
+        opCode = int('0101', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'boz'):
+        opCode = int('0110', base=2)
+        rs = int(ins[1], base=2)
+        imm = int(ins[2], base=2)
+    elif(ins[0] == 'div'):
+        opCode = int('0111', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'baw'):
+        opCode = int('1000', base=2)
+        imm = int(ins[2], base=2)
+    elif(ins[0] == 'and'):
+        opCode = int('1001', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'cmp'):
+        opCode = int('1010', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'or'):
+        opCode = int('1011', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'ls'):
+        opCode = int('1101', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+    elif(ins[0] == 'rs'):
+        opCode = int('1111', base=2)
+        rd = int(ins[1], base=2)
+        rs = int(ins[2], base=2)
+        rt = int(ins[3], base=2)
+
+    return opCode, rs, rt, rd, imm
+
+
+def decode(asm):
+    opcode, rs, rt, rd, imm = asm2int(asm)
+    print("OpCOde:", opcode, "rs:", rs, "rt:", rt, "rd:", rd, "imm:", imm)
+    # instr = int2hex(opcode, rs, rt, rd, func, imm)
+    # return instr
 
 
 def readFromFile(address):
@@ -20,40 +106,12 @@ try:
     data = readFromFile(script_path)
     print("File Read Successfully")
 
-    for instruction in data:
-        ins = list(instruction.split())
-        opCode = ""
+    hexList = []
 
-        if(ins[0] == 'ld'):
-            opCode = '0000'
-        elif(ins[0] == 'add'):
-            opCode = '0001'
-        elif(ins[0] == 'st'):
-            opCode = '0010'
-        elif(ins[0] == 'sub'):
-            opCode = '0011'
-        elif(ins[0] == 'sti'):
-            opCode = '0100'
-        elif(ins[0] == 'mul'):
-            opCode = '0101'
-        elif(ins[0] == 'boz'):
-            opCode = '0110'
-        elif(ins[0] == 'div'):
-            opCode = '0111'
-        elif(ins[0] == 'baw'):
-            opCode = '1000 0000'
-        elif(ins[0] == 'and'):
-            opCode = '1001'
-        elif(ins[0] == 'cmp'):
-            opCode = '1010'
-        elif(ins[0] == 'or'):
-            opCode = '1011'
-        elif(ins[0] == 'ls'):
-            opCode = '1101'
-        elif(ins[0] == 'rs'):
-            opCode = '1111'
-        # writeToFile(script_path, data)
-        print(opCode)
+    for instruction in data:
+        hexList.append(decode(instruction))
+
+    # writeToFile(script_path, data)
 
 except IOError as error:
     print(error)
