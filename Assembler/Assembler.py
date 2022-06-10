@@ -1,6 +1,13 @@
 import os
 
 
+def int2hex(opCode, rs, rt, rd, imm):
+    if opCode % 2:
+        pass
+    else:
+        pass
+
+
 def asm2int(asm):
     ins = list(asm.split())
     opCode = 0
@@ -82,8 +89,8 @@ def asm2int(asm):
 def decode(asm):
     opcode, rs, rt, rd, imm = asm2int(asm)
     print("OpCOde:", opcode, "rs:", rs, "rt:", rt, "rd:", rd, "imm:", imm)
-    # instr = int2hex(opcode, rs, rt, rd, func, imm)
-    # return instr
+    instr = int2hex(opcode, rs, rt, rd, imm)
+    return instr
 
 
 def readFromFile(address):
