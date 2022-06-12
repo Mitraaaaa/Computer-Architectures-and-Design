@@ -17,71 +17,70 @@ def asm2int(asm):
     imm = 0
 
     if(ins[0] == 'ld'):
-        opCode = int('0000', base=2)
-        rs = int(ins[1], base=2)
-        rt = int(ins[2], base=2)
-        imm = int(ins[3], base=2)
+        rs = int(ins[1])
+        rt = int(ins[2])
+        imm = int(ins[3])
     elif(ins[0] == 'add'):
-        opCode = int('0001', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 1
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'st'):
-        opCode = int('0010', base=2)
-        rs = int(ins[1], base=2)
-        rt = int(ins[2], base=2)
-        imm = int(ins[3], base=2)
+        opCode = 2
+        rs = int(ins[1])
+        rt = int(ins[2])
+        imm = int(ins[3])
     elif(ins[0] == 'sub'):
-        opCode = int('0011', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 3
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'sti'):
-        opCode = int('0100', base=2)
-        rt = int(ins[1], base=2)
-        imm = int(ins[2], base=2)
+        opCode = 4
+        rt = int(ins[1])
+        imm = int(ins[2])
     elif(ins[0] == 'mul'):
-        opCode = int('0101', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 5
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'boz'):
-        opCode = int('0110', base=2)
-        rs = int(ins[1], base=2)
-        imm = int(ins[2], base=2)
+        opCode = 6
+        rs = int(ins[1])
+        imm = int(ins[2])
     elif(ins[0] == 'div'):
-        opCode = int('0111', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 7
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'baw'):
-        opCode = int('1000', base=2)
-        imm = int(ins[2], base=2)
+        opCode = 8
+        imm = int(ins[2])
     elif(ins[0] == 'and'):
-        opCode = int('1001', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 9
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'cmp'):
-        opCode = int('1010', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 10
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'or'):
-        opCode = int('1011', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 11
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'ls'):
-        opCode = int('1101', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 13
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
     elif(ins[0] == 'rs'):
-        opCode = int('1111', base=2)
-        rd = int(ins[1], base=2)
-        rs = int(ins[2], base=2)
-        rt = int(ins[3], base=2)
+        opCode = 15
+        rd = int(ins[1])
+        rs = int(ins[2])
+        rt = int(ins[3])
 
     return opCode, rs, rt, rd, imm
 
