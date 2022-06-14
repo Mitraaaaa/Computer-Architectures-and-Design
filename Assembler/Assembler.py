@@ -9,7 +9,7 @@ def int2hex(opCode, rs, rt, rd, imm):
         rd_hx = hex(rd)
         imm_hx = ""
 
-    elif opCode == 0 or opCode == 2 :
+    elif opCode == 0 or opCode == 2:
         opcode_hx = hex(opCode)
         rs_hx = hex(rs)
         rt_hx = hex(rt)
@@ -33,11 +33,11 @@ def int2hex(opCode, rs, rt, rd, imm):
     else:
         opcode_hx = hex(opCode)
         rs_hx = ""
-        rt_hx = "0000"
+        rt_hx = "0"
         rd_hx = ""
         imm_hx = hex(imm)
 
-    return str(opcode_hx) + str(rs_hx) + str(rt_hx) + str(rd_hx) + str(imm_hx)
+    return str(opcode_hx) + str(rs_hx).replace("0x", "") + str(rt_hx).replace("0x", "") + str(rd_hx).replace("0x", "") + str(imm_hx).replace("0x", "")
 
 
 def asm2int(asm):
@@ -48,7 +48,7 @@ def asm2int(asm):
     rt = 0
     imm = 0
 
-    if ( ins[0] == 'ld' ):
+    if (ins[0] == 'ld'):
         rs = int(ins[1])
         rt = int(ins[2])
         imm = int(ins[3])
@@ -119,7 +119,7 @@ def asm2int(asm):
 
 def decode(asm):
     opcode, rs, rt, rd, imm = asm2int(asm)
-    print("OpCOde:", opcode, "rs:", rs, "rt:", rt, "rd:", rd, "imm:", imm)
+    # print("OpCOde:", opcode, "rs:", rs, "rt:", rt, "rd:", rd, "imm:", imm)
     instr = int2hex(opcode, rs, rt, rd, imm)
     return instr
 
@@ -148,7 +148,7 @@ try:
     for instruction in data:
         hexList.append(decode(instruction))
 
-    # writeToFile(script_path, data)
+    writeToFile(script_path, hexList)
 
 except IOError as error:
     print(error)
