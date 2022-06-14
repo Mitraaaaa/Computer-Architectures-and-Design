@@ -3,9 +3,41 @@ import os
 
 def int2hex(opCode, rs, rt, rd, imm):
     if opCode % 2:
-        pass
+        opcode_hx = hex(opCode)
+        rs_hx = hex(rs)
+        rt_hx = hex(rt)
+        rd_hx = hex(rd)
+        imm_hx = ""
+
+    elif opCode == 0 or opCode == 2 :
+        opcode_hx = hex(opCode)
+        rs_hx = hex(rs)
+        rt_hx = hex(rt)
+        rd_hx = ""
+        imm_hx = hex(imm)
+
+    elif opCode == 4:
+        opcode_hx = hex(opCode)
+        rs_hx = ""
+        rt_hx = hex(rt)
+        rd_hx = ""
+        imm_hx = hex(imm)
+
+    elif opCode == 6:
+        opcode_hx = hex(opCode)
+        rs_hx = hex(rs)
+        rt_hx = ""
+        rd_hx = ""
+        imm_hx = hex(imm)
+
     else:
-        pass
+        opcode_hx = hex(opCode)
+        rs_hx = ""
+        rt_hx = "0000"
+        rd_hx = ""
+        imm_hx = hex(imm)
+
+    return str(opcode_hx) + str(rs_hx) + str(rt_hx) + str(rd_hx) + str(imm_hx)
 
 
 def asm2int(asm):
@@ -16,7 +48,7 @@ def asm2int(asm):
     rt = 0
     imm = 0
 
-    if(ins[0] == 'ld'):
+    if ( ins[0] == 'ld' ):
         rs = int(ins[1])
         rt = int(ins[2])
         imm = int(ins[3])
