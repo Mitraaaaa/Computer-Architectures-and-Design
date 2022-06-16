@@ -1,4 +1,5 @@
 import os
+import tobin
 
 
 def int2hex(opCode, rs, rt, rd, imm):
@@ -121,7 +122,8 @@ def decode(asm):
     opcode, rs, rt, rd, imm = asm2int(asm)
     # print("OpCOde:", opcode, "rs:", rs, "rt:", rt, "rd:", rd, "imm:", imm)
     instr = int2hex(opcode, rs, rt, rd, imm)
-    return instr
+    binstr = tobin.int2bin(opcode, rs, rt, rd, imm)
+    return (instr, binstr)
 
 
 def readFromFile(address):
@@ -130,8 +132,16 @@ def readFromFile(address):
         return file.readlines()
 
 
-def writeToFile(address, info):
-    address = address.replace("\Assembler.py", "\out.txt")
+def writeToFileHex(address, info):
+    address = address.replace("\Assembler.py", "\out_hex.txt")
+    file = open(address, 'w+')
+    for line in info:
+        file.write(line + "\n")
+    file.close()
+
+
+def writeToFileBin(address, info):
+    address = address.replace("\Assembler.py", "\out_bin.txt")
     file = open(address, 'w+')
     for line in info:
         file.write(line + "\n")
@@ -144,11 +154,15 @@ try:
     print("File Read Successfully")
 
     hexList = []
+    binList = []
 
     for instruction in data:
-        hexList.append(decode(instruction))
+        a, b = decode(instruction)
+        hexList.append(a)
+        binList.append(b)
 
-    writeToFile(script_path, hexList)
+    writeToFileHex(script_path, hexList)
+    writeToFileBin(script_path, binList)
 
 except IOError as error:
     print(error)
